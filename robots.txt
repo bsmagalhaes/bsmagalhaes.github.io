@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bsmagalhaes.github.io/sitemap.xml
+Sitemap: https://bsmagalhaes.github.io/rendra-design-system/sitemap.xml
