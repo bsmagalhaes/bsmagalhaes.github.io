@@ -11,8 +11,7 @@
     <meta name="robots" content="index, follow" />
     <meta name="robots" content="noai, noimageai" />
     <meta name="author" content="Bruno Magalhaes" />
-    <meta name="theme-color" content="#0c0e12" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#f4f2ec" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#111111" />
     <link rel="canonical" href="https://bsmagalhaes.github.io/" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
 
@@ -97,747 +96,240 @@
       }
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-
     <style>
+      /* Identidade visual da família Rendra: a mesma do site da Rendra IDE (bsmagalhaes.github.io/rendra-ui-ide) */
       :root {
-        --background: #0c0e12;
-        --surface: #13161c;
-        --surface-raised: #1a1e26;
-        --foreground: #ece9e2;
-        --muted-foreground: #979ca6;
-        --faint-foreground: #6b707a;
-        --border: rgba(236, 233, 226, 0.1);
-        --border-strong: rgba(236, 233, 226, 0.22);
-        --accent: #ff7a45;
-        --accent-foreground: #140a05;
-        --ring: #ff9a6e;
-        --shadow-shot: 0 30px 60px -30px rgba(0, 0, 0, 0.8);
-
-        --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
-        --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-
-        --gutter: clamp(16px, 4vw, 56px);
-        --max: 1320px;
-        --radius: 10px;
+        --bg: #111111; --bg-2: #171717; --card: #1c1c1c; --line: #2c2c2c;
+        --text: #f2f2f2; --text-2: #c4c4c4; --muted: #9a9a9a;
+        --orange: #e8650a; --orange-text: #ff8a3d;
+        --mono: ui-monospace, "Cascadia Code", "JetBrains Mono", Consolas, monospace;
+        --sans: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
         color-scheme: dark;
       }
-
-      @media (prefers-color-scheme: light) {
-        :root {
-          --background: #f4f2ec;
-          --surface: #ebe8e0;
-          --surface-raised: #fffdf8;
-          --foreground: #16181d;
-          --muted-foreground: #555a63;
-          --faint-foreground: #767b84;
-          --border: rgba(22, 24, 29, 0.12);
-          --border-strong: rgba(22, 24, 29, 0.28);
-          --accent: #c2410c;
-          --accent-foreground: #ffffff;
-          --ring: #c2410c;
-          --shadow-shot: 0 30px 60px -34px rgba(22, 24, 29, 0.45);
-          color-scheme: light;
-        }
-      }
-
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-      }
-
-      html {
-        -webkit-text-size-adjust: 100%;
-        scroll-behavior: smooth;
-      }
-
-      body {
-        margin: 0;
-        background: var(--background);
-        color: var(--foreground);
-        font-family: var(--font-display);
-        font-size: 1.0625rem;
-        line-height: 1.55;
-        font-optical-sizing: auto;
-        -webkit-font-smoothing: antialiased;
-      }
-
-      img {
-        display: block;
-        max-width: 100%;
-        height: auto;
-      }
-
-      a {
-        color: inherit;
-      }
-
-      :focus-visible {
-        outline: 2px solid var(--ring);
-        outline-offset: 3px;
-        border-radius: 4px;
-      }
-
-      .skip {
-        position: absolute;
-        left: var(--gutter);
-        top: -60px;
-        padding: 10px 14px;
-        background: var(--accent);
-        color: var(--accent-foreground);
-        font-family: var(--font-mono);
-        font-size: 0.875rem;
-        text-decoration: none;
-        z-index: 10;
-      }
-
-      .skip:focus {
-        top: 12px;
-      }
-
-      .mono {
-        font-family: var(--font-mono);
-        font-size: 0.8125rem;
-        letter-spacing: 0;
-      }
-
-      .shell {
-        max-width: var(--max);
-        margin: 0 auto;
-        padding: 0 var(--gutter);
-        display: grid;
-        grid-template-columns: minmax(0, 1fr);
-        gap: 0;
-      }
-
-      /* Coluna de apresentação */
-      .intro {
-        padding: clamp(40px, 8vw, 96px) 0 clamp(40px, 6vw, 72px);
-        border-bottom: 1px solid var(--border);
-      }
-
-      .mark {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        color: var(--muted-foreground);
-      }
-
-      .mark svg {
-        flex: none;
-      }
-
-      h1 {
-        margin: 28px 0 0;
-        font-size: clamp(3.4rem, 10vw, 7.25rem);
-        font-weight: 800;
-        line-height: 0.92;
-        letter-spacing: -0.045em;
-      }
-
-      h1 .dot {
-        color: var(--accent);
-      }
-
-      .lead {
-        margin: 28px 0 0;
-        max-width: 30ch;
-        font-size: clamp(1.25rem, 2.2vw, 1.6rem);
-        line-height: 1.3;
-        font-weight: 500;
-        letter-spacing: -0.015em;
-      }
-
-      .facts {
-        list-style: none;
-        margin: 32px 0 0;
-        padding: 0;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-
-      .facts li {
-        padding: 6px 10px;
-        border: 1px solid var(--border-strong);
-        border-radius: 999px;
-        color: var(--muted-foreground);
-      }
-
-      .by {
-        margin: 40px 0 0;
-        padding-top: 20px;
-        border-top: 1px solid var(--border);
-        display: grid;
-        gap: 6px;
-        color: var(--muted-foreground);
-        font-size: 0.9375rem;
-      }
-
-      .by strong {
-        color: var(--foreground);
-        font-weight: 700;
-      }
-
-      .by nav {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 4px 18px;
-      }
-
-      .by nav a {
-        display: inline-flex;
-        align-items: center;
-        min-height: 44px;
-        text-decoration: none;
-        border-bottom: 1px solid transparent;
-      }
-
-      .by nav a:hover {
-        color: var(--foreground);
-      }
-
-      .index-nav {
-        margin: 36px 0 0;
-        display: none;
-      }
-
-      .index-nav ol {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: grid;
-        gap: 2px;
-      }
-
-      .index-nav a {
-        display: flex;
-        align-items: baseline;
-        gap: 14px;
-        min-height: 44px;
-        padding: 10px 0;
-        text-decoration: none;
-        color: var(--muted-foreground);
-        border-bottom: 1px solid var(--border);
-        transition: color 0.15s ease;
-      }
-
-      .index-nav a:hover {
-        color: var(--foreground);
-      }
-
-      .index-nav a span:first-child {
-        color: var(--faint-foreground);
-      }
-
-      /* Produtos */
-      .products {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-
-      .product {
-        padding: clamp(48px, 7vw, 88px) 0;
-        border-bottom: 1px solid var(--border);
-        scroll-margin-top: 24px;
-      }
-
-      .product:last-child {
-        border-bottom: 0;
-      }
-
-      .product-head {
-        display: flex;
-        align-items: baseline;
-        justify-content: space-between;
-        gap: 16px;
-        color: var(--faint-foreground);
-      }
-
-      .product h2 {
-        margin: 14px 0 0;
-        font-size: clamp(2.1rem, 4.4vw, 3.4rem);
-        font-weight: 800;
-        line-height: 1;
-        letter-spacing: -0.035em;
-      }
-
-      .product .kind {
-        margin: 10px 0 0;
-        color: var(--accent);
-        font-family: var(--font-mono);
-        font-size: 0.8125rem;
-      }
-
-      .product p.desc {
-        margin: 20px 0 0;
-        max-width: 60ch;
-        color: var(--muted-foreground);
-      }
-
-      .stack {
-        list-style: none;
-        margin: 20px 0 0;
-        padding: 0;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px 18px;
-        color: var(--foreground);
-      }
-
-      .stack li::before {
-        content: "/ ";
-        color: var(--faint-foreground);
-      }
-
-      .shot {
-        margin: 32px 0 0;
-        border-radius: var(--radius);
-        overflow: hidden;
-        border: 1px solid var(--border);
-        background: var(--surface);
-        box-shadow: var(--shadow-shot);
-      }
-
-      .shot img {
-        width: 100%;
-      }
-
-      .phones {
-        margin: 32px 0 0;
-        padding: clamp(20px, 3vw, 36px);
-        border-radius: var(--radius);
-        border: 1px solid var(--border);
-        background: var(--surface);
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: clamp(10px, 2vw, 24px);
-        align-items: start;
-      }
-
-      .phones img {
-        width: 100%;
-        border-radius: clamp(14px, 2vw, 26px);
-        border: 1px solid var(--border-strong);
-        box-shadow: var(--shadow-shot);
-      }
-
-      .phones img:nth-child(2) {
-        margin-top: clamp(16px, 4vw, 48px);
-      }
-
-      .actions {
-        margin: 28px 0 0;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 10px 22px;
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        min-height: 48px;
-        padding: 0 20px;
-        border-radius: 8px;
-        background: var(--accent);
-        color: var(--accent-foreground);
-        font-weight: 700;
-        text-decoration: none;
-        transition: transform 0.15s ease, filter 0.15s ease;
-      }
-
-      .btn:hover {
-        filter: brightness(1.08);
-      }
-
-      .btn:active {
-        transform: translateY(1px);
-      }
-
-      .link {
-        display: inline-flex;
-        align-items: center;
-        min-height: 44px;
-        color: var(--foreground);
-        text-decoration: underline;
-        text-decoration-color: var(--border-strong);
-        text-underline-offset: 5px;
-      }
-
-      .link:hover {
-        text-decoration-color: var(--accent);
-      }
-
-      .cmd {
-        margin: 24px 0 0;
-        display: flex;
-        align-items: stretch;
-        max-width: 460px;
-        border: 1px solid var(--border-strong);
-        border-radius: 8px;
-        background: var(--surface-raised);
-        overflow: hidden;
-      }
-
-      .cmd code {
-        flex: 1;
-        min-width: 0;
-        padding: 12px 14px;
-        font-family: var(--font-mono);
-        font-size: 0.875rem;
-        white-space: nowrap;
-        overflow-x: auto;
-      }
-
-      .cmd code::before {
-        content: "$ ";
-        color: var(--faint-foreground);
-      }
-
-      .cmd button {
-        flex: none;
-        min-width: 88px;
-        min-height: 44px;
-        border: 0;
-        border-left: 1px solid var(--border-strong);
-        background: transparent;
-        color: var(--muted-foreground);
-        font-family: var(--font-mono);
-        font-size: 0.8125rem;
-        cursor: pointer;
-      }
-
-      .cmd button:hover {
-        color: var(--foreground);
-      }
-
-      /* Princípios e rodapé */
-      .principles {
-        padding: clamp(48px, 7vw, 88px) 0;
-        border-top: 1px solid var(--border);
-      }
-
-      .principles h2 {
-        margin: 0;
-        font-size: clamp(1.6rem, 3vw, 2.2rem);
-        font-weight: 800;
-        letter-spacing: -0.03em;
-        line-height: 1.05;
-      }
-
-      .principles ul {
-        list-style: none;
-        margin: 28px 0 0;
-        padding: 0;
-        display: grid;
-        grid-template-columns: minmax(0, 1fr);
-        gap: 0;
-        border-top: 1px solid var(--border);
-      }
-
-      .principles li {
-        padding: 18px 0;
-        border-bottom: 1px solid var(--border);
-        display: grid;
-        gap: 4px;
-      }
-
-      .principles li strong {
-        font-weight: 700;
-      }
-
-      .principles li span {
-        color: var(--muted-foreground);
-        font-size: 0.9375rem;
-      }
-
-      footer {
-        max-width: var(--max);
-        margin: 0 auto;
-        padding: 28px var(--gutter) 40px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: 8px 24px;
-        color: var(--faint-foreground);
-        border-top: 1px solid var(--border);
-      }
-
-      footer a {
-        text-decoration: none;
-      }
-
-      footer a:hover {
-        color: var(--foreground);
-      }
-
-      @media (min-width: 720px) {
-        .principles ul {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          column-gap: 40px;
-        }
-      }
-
-      @media (min-width: 1080px) {
-        .shell {
-          grid-template-columns: minmax(0, 5fr) minmax(0, 8fr);
-          gap: clamp(48px, 6vw, 96px);
-        }
-
-        .intro {
-          position: sticky;
-          top: 0;
-          align-self: start;
-          min-height: 100vh;
-          border-bottom: 0;
-          display: flex;
-          flex-direction: column;
-        }
-
-        .index-nav {
-          display: block;
-        }
-
-        .by {
-          margin-top: auto;
-        }
-
-        .product:first-child {
-          padding-top: clamp(40px, 8vw, 96px);
-        }
-
-        .principles {
-          grid-column: 2;
-        }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto;
-        }
-
-        * {
-          transition: none !important;
-        }
-      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 var(--sans); overflow-x: hidden; }
+      a { color: var(--orange-text); }
+      img { max-width: 100%; height: auto; display: block; }
+      :focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+      .wrap { width: 90%; margin: 0 auto; }
+      section { padding: 72px 0; border-top: 1px solid var(--line); }
+      h1, h2, h3 { line-height: 1.2; margin: 0; }
+      h2 { font-size: clamp(26px, 3.4vw, 36px); margin-bottom: 12px; }
+      .lead { color: var(--text-2); font-size: 18px; max-width: 760px; margin: 0 0 32px; }
+      .eyebrow { font: 600 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--orange-text); margin-bottom: 14px; }
+      .skip { position: absolute; left: 5%; top: -60px; background: var(--orange); color: #111; padding: 10px 14px; border-radius: 8px; font-weight: 600; z-index: 10; }
+      .skip:focus { top: 12px; }
+
+      header.hero { padding: 64px 0 56px; }
+      .brand { display: flex; align-items: center; gap: 14px; margin-bottom: 36px; }
+      .brand svg { width: 44px; height: 44px; flex: none; }
+      .brand b { font: 700 18px var(--mono); letter-spacing: .08em; }
+      .brand b span { color: var(--orange); }
+      .hero-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; align-items: center; }
+      .hero h1 { font-size: clamp(38px, 5.2vw, 64px); letter-spacing: -1px; margin-bottom: 18px; }
+      .hero h1 span { color: var(--orange); }
+      .hero p { color: var(--text-2); font-size: 19px; margin: 0 0 28px; max-width: 640px; }
+      .cta { display: flex; flex-wrap: wrap; gap: 12px; }
+      .btn { display: inline-flex; align-items: center; gap: 8px; min-height: 46px; padding: 0 22px; border-radius: 8px; font-weight: 600; text-decoration: none; border: 1px solid var(--line); color: var(--text); background: var(--card); }
+      .btn.primary { background: var(--orange); border-color: var(--orange); color: #111; }
+      .btn:hover { filter: brightness(1.1); }
+      .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+      .tags span { font: 12px var(--mono); color: var(--text-2); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; }
+      .hero-stack { position: relative; aspect-ratio: 16 / 10; }
+      .hero-stack img { position: absolute; border-radius: 12px; border: 1px solid var(--line); box-shadow: 0 24px 70px rgba(0, 0, 0, .55); }
+      .hero-stack .a { width: 82%; top: 0; right: 0; }
+      .hero-stack .b { width: 70%; bottom: 0; right: 12%; }
+      .hero-stack .c { width: 19%; bottom: 4%; left: 0; border-radius: 16px; }
+
+      .projects { display: grid; gap: 24px; }
+      .project { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 40px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 32px; }
+      .project .num { font: 600 12px/1 var(--mono); letter-spacing: .12em; color: var(--muted); margin-bottom: 14px; }
+      .project h3 { font-size: clamp(24px, 2.6vw, 32px); margin-bottom: 6px; }
+      .project .kind { font: 13px var(--mono); color: var(--orange-text); margin: 0 0 16px; }
+      .project p { color: var(--text-2); margin: 0 0 18px; }
+      .project .tags { margin: 0 0 22px; }
+      .shot { display: block; border-radius: 10px; border: 1px solid var(--line); overflow: hidden; background: var(--bg-2); }
+      .shot img { width: 100%; }
+      .phones { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; padding: 24px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg-2); align-items: start; }
+      .phones img { border-radius: 18px; border: 1px solid var(--line); box-shadow: 0 16px 40px rgba(0, 0, 0, .5); }
+      .phones img:nth-child(2) { margin-top: 32px; }
+      .code { position: relative; background: #0b0b0b; border: 1px solid var(--line); border-radius: 10px; padding: 14px 96px 14px 18px; font: 14px/1.7 var(--mono); color: #e6e6e6; overflow-x: auto; white-space: pre; margin: 0 0 18px; }
+      .copy { position: absolute; top: 50%; right: 8px; transform: translateY(-50%); font: 12px var(--mono); background: var(--card); color: var(--text-2); border: 1px solid var(--line); border-radius: 6px; padding: 0 12px; min-height: 36px; min-width: 76px; cursor: pointer; }
+
+      .features { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+      .feature { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 24px; }
+      .feature h3 { font-size: 18px; margin-bottom: 8px; }
+      .feature p { margin: 0; color: var(--text-2); font-size: 15px; }
+      .feature .ico { font: 700 14px var(--mono); color: var(--orange-text); margin-bottom: 12px; }
+
+      footer { border-top: 1px solid var(--line); padding: 48px 0 64px; color: var(--muted); font-size: 14px; }
+      footer .cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+      footer h3 { color: var(--text); font-size: 15px; margin-bottom: 10px; }
+      footer p { margin: 0 0 8px; }
+      footer a { color: var(--text-2); display: inline-block; padding: 4px 0; }
+
+      @media (max-width: 1100px) {
+        .features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+      @media (max-width: 900px) {
+        .hero-grid, .project, footer .cols { grid-template-columns: minmax(0, 1fr); }
+        .project { padding: 24px; gap: 24px; }
+        .project .media { order: -1; }
+      }
+      @media (max-width: 600px) {
+        section { padding: 56px 0; }
+        .features { grid-template-columns: minmax(0, 1fr); }
+        .project { padding: 20px; }
+        .phones { padding: 14px; gap: 10px; }
+        .phones img { border-radius: 12px; }
+      }
+      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     </style>
   </head>
   <body>
-    <a class="skip" href="#produtos">Pular para os projetos</a>
+    <a class="skip" href="#projetos">Pular para os projetos</a>
 
-    <div class="shell">
-      <header class="intro">
-        <div class="mark mono">
-          <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
-            <rect width="32" height="32" rx="7" fill="currentColor" opacity="0.14" />
-            <path d="M10 23V9h7.2a4.4 4.4 0 0 1 1.3 8.6L23 23" fill="none" stroke="var(--accent)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-          <span>bsmagalhaes.github.io</span>
+    <header class="hero">
+      <div class="wrap">
+        <div class="brand">
+          <svg viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" rx="10" fill="#1c1c1c" stroke="#2c2c2c" /><path d="M15 31V13h9.2a5.6 5.6 0 0 1 1.6 11L31 31" fill="none" stroke="#e8650a" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          <b>RENDRA <span>UI</span></b>
         </div>
-
-        <h1>Rendra<br />UI<span class="dot">.</span></h1>
-
-        <p class="lead">
-          Ferramentas abertas para construir sistemas, apps e o seu próprio ambiente de trabalho com IA.
-        </p>
-
-        <ul class="facts mono" aria-label="Características comuns aos projetos">
-          <li>Gratuito</li>
-          <li>Licença MIT</li>
-          <li>Português do Brasil</li>
-          <li>Testado de ponta a ponta</li>
-        </ul>
-
-        <nav class="index-nav" aria-label="Projetos">
-          <ol>
-            <li><a href="#web"><span class="mono">01</span><span>Rendra Design System</span></a></li>
-            <li><a href="#app"><span class="mono">02</span><span>Rendra App</span></a></li>
-            <li><a href="#ide"><span class="mono">03</span><span>Rendra IDE</span></a></li>
-          </ol>
-        </nav>
-
-        <div class="by">
-          <span>Criado e mantido por <strong>Bruno Magalhaes</strong></span>
-          <nav aria-label="Contato do autor">
-            <a href="https://www.brunomagalhaes.me" rel="me">brunomagalhaes.me</a>
-            <a href="https://github.com/bsmagalhaes" rel="me">GitHub</a>
-            <a href="https://www.instagram.com/brunomagalhaes.me/" rel="me">Instagram</a>
-            <a href="https://www.npmjs.com/org/rendra-ui">npm</a>
-          </nav>
+        <div class="hero-grid">
+          <div>
+            <h1>Ferramentas abertas para construir sistemas, apps e o seu ambiente com <span>IA</span>.</h1>
+            <p>Um design system web, um design system mobile e uma IDE para quem programa com agentes. Gratuitos, em português do Brasil, com licença MIT e testados de ponta a ponta.</p>
+            <div class="cta">
+              <a class="btn primary" href="#projetos">Ver os projetos</a>
+              <a class="btn" href="https://github.com/bsmagalhaes">Ver no GitHub</a>
+            </div>
+            <div class="tags"><span>React</span><span>React Native</span><span>Electron</span><span>pt-BR</span><span>MIT</span></div>
+          </div>
+          <div class="hero-stack" aria-hidden="true">
+            <img class="a" src="assets/web-painel.webp" width="1440" height="810" alt="" />
+            <img class="b" src="assets/ide.webp" width="1440" height="810" alt="" />
+            <img class="c" src="assets/app-aurora-escuro-mobile.webp" width="440" height="952" alt="" />
+          </div>
         </div>
-      </header>
+      </div>
+    </header>
 
-      <main id="produtos">
-        <ol class="products">
-          <li class="product" id="web">
-            <div class="product-head mono"><span>01 / 03</span><span>Web</span></div>
-            <h2>Rendra Design System</h2>
-            <p class="kind">Design system e boilerplate de sistema administrativo</p>
-            <p class="desc">
-              Tokens travados, três modelos, quatro paletas e mais de 50 componentes, com AppShell e telas prontas:
-              painel, listagem, cadastro, CRM kanban, agenda e atendimento omnichannel. Para outra marca, você troca
-              cores, fonte e ícones, e nenhum componente muda.
-            </p>
-            <ul class="stack mono" aria-label="Tecnologias">
-              <li>React 19</li>
-              <li>TypeScript</li>
-              <li>Tailwind CSS 4</li>
-              <li>Vite</li>
-              <li>Storybook</li>
-            </ul>
-            <figure class="shot">
-              <img
-                src="assets/web-painel.webp"
-                width="1440"
-                height="810"
-                alt="Painel do Rendra Design System com indicadores de receita, clientes ativos, ticket médio e gráfico de receita e meta"
-                loading="lazy"
-                decoding="async"
-              />
-            </figure>
-            <div class="cmd"><code>npm install @rendra-ui/web</code><button type="button" data-copy="npm install @rendra-ui/web">Copiar</button></div>
-            <div class="actions">
-              <a class="btn" href="https://bsmagalhaes.github.io/rendra-ui-web/">Abrir o demo <span aria-hidden="true">→</span></a>
-              <a class="link" href="https://bsmagalhaes.github.io/rendra-ui-web/storybook/">Storybook</a>
-              <a class="link" href="https://github.com/bsmagalhaes/rendra-ui-web">Código no GitHub</a>
-              <a class="link" href="https://www.npmjs.com/package/@rendra-ui/web">npm</a>
-            </div>
-          </li>
+    <main>
+      <section id="projetos">
+        <div class="wrap">
+          <div class="eyebrow">Projetos</div>
+          <h2>Três produtos, a mesma base</h2>
+          <p class="lead">Cada um tem demo aberta, código completo no GitHub e instruções para o seu agente de IA usar o projeto do jeito certo.</p>
+          <div class="projects">
+            <article class="project" id="web">
+              <div>
+                <div class="num">01 / WEB</div>
+                <h3>Rendra Design System</h3>
+                <p class="kind">Design system e boilerplate de sistema administrativo</p>
+                <p>Tokens travados, três modelos, quatro paletas e mais de 50 componentes, com AppShell e telas prontas: painel, listagem, cadastro, CRM kanban, agenda e atendimento omnichannel. Para outra marca, você troca cores, fonte e ícones, e nenhum componente muda.</p>
+                <div class="tags"><span>React 19</span><span>TypeScript</span><span>Tailwind CSS 4</span><span>Vite</span><span>Storybook</span></div>
+                <div class="code" data-copy="npm install @rendra-ui/web">npm install @rendra-ui/web<button class="copy" type="button">copiar</button></div>
+                <div class="cta">
+                  <a class="btn primary" href="https://bsmagalhaes.github.io/rendra-ui-web/">Abrir o demo</a>
+                  <a class="btn" href="https://github.com/bsmagalhaes/rendra-ui-web">GitHub</a>
+                  <a class="btn" href="https://www.npmjs.com/package/@rendra-ui/web">npm</a>
+                </div>
+              </div>
+              <div class="media">
+                <a class="shot" href="https://bsmagalhaes.github.io/rendra-ui-web/"><img src="assets/web-painel.webp" width="1440" height="810" alt="Painel do Rendra Design System com indicadores de receita, clientes ativos, ticket médio e gráfico de receita e meta" loading="lazy" decoding="async" /></a>
+              </div>
+            </article>
 
-          <li class="product" id="app">
-            <div class="product-head mono"><span>02 / 03</span><span>Mobile</span></div>
-            <h2>Rendra App</h2>
-            <p class="kind">Design system e boilerplate mobile</p>
-            <p class="desc">
-              O mesmo sistema de tokens do web, reconstruído para o celular: 49 componentes, navegação pronta com
-              cabeçalho, barra inferior e menu, telas de exemplo, splash animado e troca de marca sem mexer em
-              componente.
-            </p>
-            <ul class="stack mono" aria-label="Tecnologias">
-              <li>React Native</li>
-              <li>Expo SDK 57</li>
-              <li>Expo Router</li>
-              <li>NativeWind 4</li>
-              <li>TypeScript</li>
-            </ul>
-            <div class="phones">
-              <img
-                src="assets/app-aurora-escuro-mobile.webp"
-                width="440"
-                height="952"
-                alt="Rendra App no modo escuro, vitrine de componentes agrupados por categoria"
-                loading="lazy"
-                decoding="async"
-              />
-              <img
-                src="assets/app-equilibrio-tokens-mobile.webp"
-                width="440"
-                height="952"
-                alt="Tela de tokens do Rendra App com a paleta e o contraste AA conferido ao vivo"
-                loading="lazy"
-                decoding="async"
-              />
-              <img
-                src="assets/app-aurora-galeria-mobile.webp"
-                width="440"
-                height="952"
-                alt="Galeria do Rendra App com troca de modelo, paleta e modo sem sair da tela"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <div class="cmd"><code>npm install @rendra-ui/app</code><button type="button" data-copy="npm install @rendra-ui/app">Copiar</button></div>
-            <div class="actions">
-              <a class="btn" href="https://bsmagalhaes.github.io/rendra-ui-app/">Abrir a vitrine <span aria-hidden="true">→</span></a>
-              <a class="link" href="https://github.com/bsmagalhaes/rendra-ui-app">Código no GitHub</a>
-              <a class="link" href="https://www.npmjs.com/package/@rendra-ui/app">npm</a>
-            </div>
-          </li>
+            <article class="project" id="app">
+              <div>
+                <div class="num">02 / MOBILE</div>
+                <h3>Rendra App</h3>
+                <p class="kind">Design system e boilerplate mobile</p>
+                <p>O mesmo sistema de tokens do web, reconstruído para o celular: 49 componentes, navegação pronta com cabeçalho, barra inferior e menu, telas de exemplo, splash animado e troca de marca sem mexer em componente.</p>
+                <div class="tags"><span>React Native</span><span>Expo SDK 57</span><span>Expo Router</span><span>NativeWind 4</span></div>
+                <div class="code" data-copy="npm install @rendra-ui/app">npm install @rendra-ui/app<button class="copy" type="button">copiar</button></div>
+                <div class="cta">
+                  <a class="btn primary" href="https://bsmagalhaes.github.io/rendra-ui-app/">Abrir a vitrine</a>
+                  <a class="btn" href="https://github.com/bsmagalhaes/rendra-ui-app">GitHub</a>
+                  <a class="btn" href="https://www.npmjs.com/package/@rendra-ui/app">npm</a>
+                </div>
+              </div>
+              <div class="media">
+                <div class="phones">
+                  <img src="assets/app-aurora-escuro-mobile.webp" width="440" height="952" alt="Rendra App no modo escuro, vitrine de componentes agrupados por categoria" loading="lazy" decoding="async" />
+                  <img src="assets/app-equilibrio-tokens-mobile.webp" width="440" height="952" alt="Tela de tokens do Rendra App com a paleta e o contraste AA conferido ao vivo" loading="lazy" decoding="async" />
+                  <img src="assets/app-aurora-galeria-mobile.webp" width="440" height="952" alt="Galeria do Rendra App com troca de modelo, paleta e modo sem sair da tela" loading="lazy" decoding="async" />
+                </div>
+              </div>
+            </article>
 
-          <li class="product" id="ide">
-            <div class="product-head mono"><span>03 / 03</span><span>Desktop</span></div>
-            <h2>Rendra IDE</h2>
-            <p class="kind">Ambiente de desenvolvimento para quem programa com IA</p>
-            <p class="desc">
-              Terminais em grade, o editor do VS Code, explorador com as cores do Git e um painel com o consumo de
-              tokens do Claude Code e do Codex por projeto, com custo por token e os limites do plano. Roda na sua
-              máquina, lendo só os arquivos locais das CLIs.
-            </p>
-            <ul class="stack mono" aria-label="Tecnologias">
-              <li>Electron</li>
-              <li>Monaco</li>
-              <li>xterm.js</li>
-              <li>Windows, macOS e Linux</li>
-            </ul>
-            <figure class="shot">
-              <img
-                src="assets/ide.webp"
-                width="1440"
-                height="810"
-                alt="Rendra IDE com explorador de arquivos, editor e terminais lado a lado"
-                loading="lazy"
-                decoding="async"
-              />
-            </figure>
-            <div class="actions">
-              <a class="btn" href="https://github.com/bsmagalhaes/rendra-ui-ide/releases/latest">Baixar a última versão <span aria-hidden="true">→</span></a>
-              <a class="link" href="https://bsmagalhaes.github.io/rendra-ui-ide/">Site da IDE</a>
-              <a class="link" href="https://github.com/bsmagalhaes/rendra-ui-ide">Código no GitHub</a>
-            </div>
-          </li>
-        </ol>
-      </main>
-
-      <section class="principles" aria-labelledby="principios">
-        <h2 id="principios">O que os três têm em comum</h2>
-        <ul>
-          <li>
-            <strong>Código aberto de verdade</strong>
-            <span>Licença MIT, código completo no GitHub, sem versão paga escondida.</span>
-          </li>
-          <li>
-            <strong>Feitos para trabalhar com IA</strong>
-            <span>Cada repositório traz regras e briefing guiado para o seu agente usar o projeto do jeito certo.</span>
-          </li>
-          <li>
-            <strong>Uma escala, sem exceção</strong>
-            <span>Espaço, tipografia, cor e raio vêm de tokens; o que está fora da escala não passa na checagem.</span>
-          </li>
-          <li>
-            <strong>Publicados com procedência</strong>
-            <span>Pacotes npm assinados pelo GitHub Actions, com CI, testes de layout e de acessibilidade.</span>
-          </li>
-        </ul>
+            <article class="project" id="ide">
+              <div>
+                <div class="num">03 / DESKTOP</div>
+                <h3>Rendra IDE</h3>
+                <p class="kind">Ambiente de desenvolvimento para quem programa com IA</p>
+                <p>Terminais em grade, o editor do VS Code, explorador com as cores do Git e o consumo de tokens do Claude Code e do Codex por projeto, com custo por token e os limites do plano. Roda na sua máquina, lendo só os arquivos locais das CLIs.</p>
+                <div class="tags"><span>Electron</span><span>Monaco</span><span>xterm.js</span><span>Windows</span><span>macOS</span><span>Linux</span></div>
+                <div class="cta">
+                  <a class="btn primary" href="https://bsmagalhaes.github.io/rendra-ui-ide/">Conhecer a IDE</a>
+                  <a class="btn" href="https://github.com/bsmagalhaes/rendra-ui-ide">GitHub</a>
+                </div>
+              </div>
+              <div class="media">
+                <a class="shot" href="https://bsmagalhaes.github.io/rendra-ui-ide/"><img src="assets/ide.webp" width="1440" height="810" alt="Rendra IDE com explorador de arquivos, editor e terminais lado a lado" loading="lazy" decoding="async" /></a>
+              </div>
+            </article>
+          </div>
+        </div>
       </section>
-    </div>
 
-    <footer class="mono">
-      <span>Rendra UI, por <a href="https://www.brunomagalhaes.me">Bruno Magalhaes</a>. Licença MIT.</span>
-      <a href="https://github.com/bsmagalhaes">github.com/bsmagalhaes</a>
+      <section id="principios">
+        <div class="wrap">
+          <div class="eyebrow">Em comum</div>
+          <h2>O que os três têm em comum</h2>
+          <p class="lead">Os mesmos princípios valem para todos os produtos da família.</p>
+          <div class="features">
+            <div class="feature"><div class="ico">MIT</div><h3>Código aberto</h3><p>Licença MIT e código completo no GitHub, para estudar, adaptar e usar inclusive em projetos comerciais.</p></div>
+            <div class="feature"><div class="ico">IA</div><h3>Feitos para trabalhar com IA</h3><p>Cada repositório traz regras e briefing guiado para o seu agente usar o projeto do jeito certo.</p></div>
+            <div class="feature"><div class="ico">1×</div><h3>Uma escala, sem exceção</h3><p>Espaço, tipografia, cor e raio vêm de tokens; o que está fora da escala não passa na checagem.</p></div>
+            <div class="feature"><div class="ico">✓</div><h3>Publicados com procedência</h3><p>Pacotes npm assinados pelo GitHub Actions, com CI, testes de layout e de acessibilidade.</p></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap cols">
+        <div>
+          <h3>Autor</h3>
+          <p>Criado e mantido por <b>Bruno Magalhaes</b>.</p>
+          <p><a href="https://www.brunomagalhaes.me" rel="me">www.brunomagalhaes.me</a></p>
+          <p><a href="mailto:contato@brunomagalhaes.me">contato@brunomagalhaes.me</a></p>
+          <p><a href="https://www.instagram.com/brunomagalhaes.me/" rel="me">@brunomagalhaes.me</a></p>
+        </div>
+        <div>
+          <h3>Projetos</h3>
+          <p><a href="https://bsmagalhaes.github.io/rendra-ui-web/">Rendra Design System</a></p>
+          <p><a href="https://bsmagalhaes.github.io/rendra-ui-app/">Rendra App</a></p>
+          <p><a href="https://bsmagalhaes.github.io/rendra-ui-ide/">Rendra IDE</a></p>
+          <p><a href="https://www.npmjs.com/org/rendra-ui">Organização no npm</a></p>
+        </div>
+        <div>
+          <h3>Licença</h3>
+          <p>MIT © 2026 Bruno Magalhaes. Pode usar, copiar, alterar e distribuir, inclusive em projetos comerciais, mantendo o aviso de copyright.</p>
+          <p><a href="https://github.com/bsmagalhaes" rel="me">github.com/bsmagalhaes</a></p>
+        </div>
+      </div>
     </footer>
 
     <script>
-      document.querySelectorAll("[data-copy]").forEach(function (botao) {
-        botao.addEventListener("click", function () {
-          var texto = botao.getAttribute("data-copy");
-          var pronto = function () {
-            botao.textContent = "Copiado";
-            setTimeout(function () {
-              botao.textContent = "Copiar";
-            }, 1600);
-          };
-          if (navigator.clipboard) {
-            navigator.clipboard.writeText(texto).then(pronto, function () {});
-          }
+      document.querySelectorAll('.copy').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var texto = b.parentElement.getAttribute('data-copy');
+          var volta = function () { setTimeout(function () { b.textContent = 'copiar'; }, 1800); };
+          if (!navigator.clipboard) { b.textContent = 'selecione e copie'; volta(); return; }
+          navigator.clipboard.writeText(texto).then(function () { b.textContent = 'copiado'; volta(); }, function () { b.textContent = 'selecione e copie'; volta(); });
         });
       });
     </script>
