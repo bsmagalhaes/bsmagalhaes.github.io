@@ -155,7 +155,7 @@
       .phones img { border-radius: 18px; border: 1px solid var(--line); box-shadow: 0 16px 40px rgba(0, 0, 0, .5); }
       .phones img:nth-child(2) { margin-top: 32px; }
       .code { position: relative; background: #0b0b0b; border: 1px solid var(--line); border-radius: 10px; padding: 14px 96px 14px 18px; font: 14px/1.7 var(--mono); color: #e6e6e6; overflow-x: auto; white-space: pre; margin: 0 0 18px; }
-      .copy { position: absolute; top: 50%; right: 8px; transform: translateY(-50%); font: 12px var(--mono); background: var(--card); color: var(--text-2); border: 1px solid var(--line); border-radius: 6px; padding: 0 12px; min-height: 36px; min-width: 76px; cursor: pointer; }
+      .copy { position: absolute; top: 50%; right: 8px; transform: translateY(-50%); font: 12px var(--mono); background: var(--card); color: var(--text-2); border: 1px solid var(--line); border-radius: 6px; padding: 0 12px; min-height: 44px; min-width: 76px; cursor: pointer; }
 
       .features { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
       .feature { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 24px; }
@@ -166,8 +166,8 @@
       footer { border-top: 1px solid var(--line); padding: 48px 0 64px; color: var(--muted); font-size: 14px; }
       footer .cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
       footer h3 { color: var(--text); font-size: 15px; margin-bottom: 10px; }
-      footer p { margin: 0 0 8px; }
-      footer a { color: var(--text-2); display: inline-block; padding: 4px 0; }
+      footer p { margin: 0; }
+      footer a { color: var(--text-2); display: inline-flex; align-items: center; min-height: 44px; }
 
       @media (max-width: 1100px) {
         .features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -183,6 +183,8 @@
         .project { padding: 20px; }
         .phones { padding: 14px; gap: 10px; }
         .phones img { border-radius: 12px; }
+        .code { padding: 14px 18px 64px; }
+        .copy { top: auto; right: 10px; bottom: 10px; transform: none; }
       }
       @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     </style>
@@ -202,7 +204,7 @@
             <p>Um design system web, um design system mobile e uma IDE para quem programa com agentes. Gratuitos, em português do Brasil, com licença MIT e testados de ponta a ponta.</p>
             <div class="cta">
               <a class="btn primary" href="#projetos">Ver os projetos</a>
-              <a class="btn" href="https://github.com/bsmagalhaes">Ver no GitHub</a>
+              <a class="btn" href="https://github.com/bsmagalhaes" target="_blank" rel="noopener">Ver no GitHub</a>
             </div>
             <div class="tags"><span>React</span><span>React Native</span><span>Electron</span><span>pt-BR</span><span>MIT</span></div>
           </div>
@@ -231,13 +233,13 @@
                 <div class="tags"><span>React 19</span><span>TypeScript</span><span>Tailwind CSS 4</span><span>Vite</span><span>Storybook</span></div>
                 <div class="code" data-copy="npm install @rendra-ui/web">npm install @rendra-ui/web<button class="copy" type="button">copiar</button></div>
                 <div class="cta">
-                  <a class="btn primary" href="https://bsmagalhaes.github.io/rendra-ui-web/">Abrir o demo</a>
-                  <a class="btn" href="https://github.com/bsmagalhaes/rendra-ui-web">GitHub</a>
-                  <a class="btn" href="https://www.npmjs.com/package/@rendra-ui/web">npm</a>
+                  <a class="btn primary" href="https://bsmagalhaes.github.io/rendra-ui-web/" target="_blank" rel="noopener">Abrir o demo</a>
+                  <a class="btn" href="https://github.com/bsmagalhaes/rendra-ui-web" target="_blank" rel="noopener">GitHub</a>
+                  <a class="btn" href="https://www.npmjs.com/package/@rendra-ui/web" target="_blank" rel="noopener">npm</a>
                 </div>
               </div>
               <div class="media">
-                <a class="shot" href="https://bsmagalhaes.github.io/rendra-ui-web/"><img src="assets/web-painel.webp" width="1440" height="810" alt="Painel do Rendra Design System com indicadores de receita, clientes ativos, ticket médio e gráfico de receita e meta" loading="lazy" decoding="async" /></a>
+                <a class="shot" href="https://bsmagalhaes.github.io/rendra-ui-web/" target="_blank" rel="noopener"><img src="assets/web-painel.webp" width="1440" height="810" alt="Painel do Rendra Design System com indicadores de receita, clientes ativos, ticket médio e gráfico de receita e meta" loading="lazy" decoding="async" /></a>
               </div>
             </article>
 
@@ -250,9 +252,9 @@
                 <div class="tags"><span>React Native</span><span>Expo SDK 57</span><span>Expo Router</span><span>NativeWind 4</span></div>
                 <div class="code" data-copy="npm install @rendra-ui/app">npm install @rendra-ui/app<button class="copy" type="button">copiar</button></div>
                 <div class="cta">
-                  <a class="btn primary" href="https://bsmagalhaes.github.io/rendra-ui-app/">Abrir a vitrine</a>
-                  <a class="btn" href="https://github.com/bsmagalhaes/rendra-ui-app">GitHub</a>
-                  <a class="btn" href="https://www.npmjs.com/package/@rendra-ui/app">npm</a>
+                  <a class="btn primary" href="https://bsmagalhaes.github.io/rendra-ui-app/" target="_blank" rel="noopener">Abrir a vitrine</a>
+                  <a class="btn" href="https://github.com/bsmagalhaes/rendra-ui-app" target="_blank" rel="noopener">GitHub</a>
+                  <a class="btn" href="https://www.npmjs.com/package/@rendra-ui/app" target="_blank" rel="noopener">npm</a>
                 </div>
               </div>
               <div class="media">
@@ -272,12 +274,12 @@
                 <p>Terminais em grade, o editor do VS Code, explorador com as cores do Git e o consumo de tokens do Claude Code e do Codex por projeto, com custo por token e os limites do plano. Roda na sua máquina, lendo só os arquivos locais das CLIs.</p>
                 <div class="tags"><span>Electron</span><span>Monaco</span><span>xterm.js</span><span>Windows</span><span>macOS</span><span>Linux</span></div>
                 <div class="cta">
-                  <a class="btn primary" href="https://bsmagalhaes.github.io/rendra-ui-ide/">Conhecer a IDE</a>
-                  <a class="btn" href="https://github.com/bsmagalhaes/rendra-ui-ide">GitHub</a>
+                  <a class="btn primary" href="https://bsmagalhaes.github.io/rendra-ui-ide/" target="_blank" rel="noopener">Conhecer a IDE</a>
+                  <a class="btn" href="https://github.com/bsmagalhaes/rendra-ui-ide" target="_blank" rel="noopener">GitHub</a>
                 </div>
               </div>
               <div class="media">
-                <a class="shot" href="https://bsmagalhaes.github.io/rendra-ui-ide/"><img src="assets/ide.webp" width="1440" height="810" alt="Rendra IDE com explorador de arquivos, editor e terminais lado a lado" loading="lazy" decoding="async" /></a>
+                <a class="shot" href="https://bsmagalhaes.github.io/rendra-ui-ide/" target="_blank" rel="noopener"><img src="assets/ide.webp" width="1440" height="810" alt="Rendra IDE com explorador de arquivos, editor e terminais lado a lado" loading="lazy" decoding="async" /></a>
               </div>
             </article>
           </div>
@@ -304,21 +306,21 @@
         <div>
           <h3>Autor</h3>
           <p>Criado e mantido por <b>Bruno Magalhaes</b>.</p>
-          <p><a href="https://www.brunomagalhaes.me" rel="me">www.brunomagalhaes.me</a></p>
+          <p><a href="https://www.brunomagalhaes.me" target="_blank" rel="me noopener">www.brunomagalhaes.me</a></p>
           <p><a href="mailto:contato@brunomagalhaes.me">contato@brunomagalhaes.me</a></p>
-          <p><a href="https://www.instagram.com/brunomagalhaes.me/" rel="me">@brunomagalhaes.me</a></p>
+          <p><a href="https://www.instagram.com/brunomagalhaes.me/" target="_blank" rel="me noopener">@brunomagalhaes.me</a></p>
         </div>
         <div>
           <h3>Projetos</h3>
-          <p><a href="https://bsmagalhaes.github.io/rendra-ui-web/">Rendra Design System</a></p>
-          <p><a href="https://bsmagalhaes.github.io/rendra-ui-app/">Rendra App</a></p>
-          <p><a href="https://bsmagalhaes.github.io/rendra-ui-ide/">Rendra IDE</a></p>
-          <p><a href="https://www.npmjs.com/org/rendra-ui">Organização no npm</a></p>
+          <p><a href="https://bsmagalhaes.github.io/rendra-ui-web/" target="_blank" rel="noopener">Rendra Design System</a></p>
+          <p><a href="https://bsmagalhaes.github.io/rendra-ui-app/" target="_blank" rel="noopener">Rendra App</a></p>
+          <p><a href="https://bsmagalhaes.github.io/rendra-ui-ide/" target="_blank" rel="noopener">Rendra IDE</a></p>
+          <p><a href="https://www.npmjs.com/org/rendra-ui" target="_blank" rel="noopener">Organização no npm</a></p>
         </div>
         <div>
           <h3>Licença</h3>
           <p>MIT © 2026 Bruno Magalhaes. Pode usar, copiar, alterar e distribuir, inclusive em projetos comerciais, mantendo o aviso de copyright.</p>
-          <p><a href="https://github.com/bsmagalhaes" rel="me">github.com/bsmagalhaes</a></p>
+          <p><a href="https://github.com/bsmagalhaes" target="_blank" rel="me noopener">github.com/bsmagalhaes</a></p>
         </div>
       </div>
     </footer>
