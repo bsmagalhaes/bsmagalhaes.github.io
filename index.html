@@ -3,22 +3,843 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Rendra Design System | Template de sistema e layout de sistema em React</title>
+    <title>Rendra UI | Design system web, app mobile e IDE open source, por Bruno Magalhaes</title>
     <meta
       name="description"
-      content="Template de sistema gratuito e open source em React, TypeScript e Tailwind CSS: layout de sistema administrativo com dashboard, tabelas, formulários, CRM kanban, agenda e chat omnichannel."
+      content="Projetos open source do Rendra UI, em português do Brasil e licença MIT: design system e boilerplate de sistema em React, design system mobile em React Native com Expo e uma IDE para quem programa com IA."
     />
-    <link rel="canonical" href="https://bsmagalhaes.github.io/rendra-design-system/" />
-    <meta http-equiv="refresh" content="0; url=https://bsmagalhaes.github.io/rendra-design-system/" />
+    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="noai, noimageai" />
+    <meta name="author" content="Bruno Magalhaes" />
+    <meta name="theme-color" content="#0c0e12" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f4f2ec" media="(prefers-color-scheme: light)" />
+    <link rel="canonical" href="https://bsmagalhaes.github.io/" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Rendra UI" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:title" content="Rendra UI: design system web, app mobile e IDE open source" />
+    <meta
+      property="og:description"
+      content="Três projetos gratuitos, em português do Brasil e licença MIT, para construir sistemas, apps e o seu ambiente de trabalho com IA."
+    />
+    <meta property="og:url" content="https://bsmagalhaes.github.io/" />
+    <meta property="og:image" content="https://bsmagalhaes.github.io/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://bsmagalhaes.github.io/#autor",
+            "name": "Bruno Magalhaes",
+            "url": "https://www.brunomagalhaes.me",
+            "sameAs": [
+              "https://github.com/bsmagalhaes",
+              "https://www.instagram.com/brunomagalhaes.me/",
+              "https://www.npmjs.com/~bsmagalhaes"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "name": "Rendra UI",
+            "url": "https://bsmagalhaes.github.io/",
+            "inLanguage": "pt-BR",
+            "author": { "@id": "https://bsmagalhaes.github.io/#autor" }
+          },
+          {
+            "@type": "ItemList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                  "@type": "SoftwareSourceCode",
+                  "name": "Rendra Design System",
+                  "url": "https://bsmagalhaes.github.io/rendra-ui-web/",
+                  "codeRepository": "https://github.com/bsmagalhaes/rendra-ui-web",
+                  "programmingLanguage": "TypeScript",
+                  "license": "https://opensource.org/licenses/MIT"
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                  "@type": "SoftwareSourceCode",
+                  "name": "Rendra App",
+                  "url": "https://bsmagalhaes.github.io/rendra-ui-app/",
+                  "codeRepository": "https://github.com/bsmagalhaes/rendra-ui-app",
+                  "programmingLanguage": "TypeScript",
+                  "license": "https://opensource.org/licenses/MIT"
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "item": {
+                  "@type": "SoftwareApplication",
+                  "name": "Rendra IDE",
+                  "url": "https://bsmagalhaes.github.io/rendra-ui-ide/",
+                  "applicationCategory": "DeveloperApplication",
+                  "operatingSystem": "Windows, macOS, Linux",
+                  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BRL" }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --background: #0c0e12;
+        --surface: #13161c;
+        --surface-raised: #1a1e26;
+        --foreground: #ece9e2;
+        --muted-foreground: #979ca6;
+        --faint-foreground: #6b707a;
+        --border: rgba(236, 233, 226, 0.1);
+        --border-strong: rgba(236, 233, 226, 0.22);
+        --accent: #ff7a45;
+        --accent-foreground: #140a05;
+        --ring: #ff9a6e;
+        --shadow-shot: 0 30px 60px -30px rgba(0, 0, 0, 0.8);
+
+        --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+        --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+        --gutter: clamp(16px, 4vw, 56px);
+        --max: 1320px;
+        --radius: 10px;
+        color-scheme: dark;
+      }
+
+      @media (prefers-color-scheme: light) {
+        :root {
+          --background: #f4f2ec;
+          --surface: #ebe8e0;
+          --surface-raised: #fffdf8;
+          --foreground: #16181d;
+          --muted-foreground: #555a63;
+          --faint-foreground: #767b84;
+          --border: rgba(22, 24, 29, 0.12);
+          --border-strong: rgba(22, 24, 29, 0.28);
+          --accent: #c2410c;
+          --accent-foreground: #ffffff;
+          --ring: #c2410c;
+          --shadow-shot: 0 30px 60px -34px rgba(22, 24, 29, 0.45);
+          color-scheme: light;
+        }
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        -webkit-text-size-adjust: 100%;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--background);
+        color: var(--foreground);
+        font-family: var(--font-display);
+        font-size: 1.0625rem;
+        line-height: 1.55;
+        font-optical-sizing: auto;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--ring);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      .skip {
+        position: absolute;
+        left: var(--gutter);
+        top: -60px;
+        padding: 10px 14px;
+        background: var(--accent);
+        color: var(--accent-foreground);
+        font-family: var(--font-mono);
+        font-size: 0.875rem;
+        text-decoration: none;
+        z-index: 10;
+      }
+
+      .skip:focus {
+        top: 12px;
+      }
+
+      .mono {
+        font-family: var(--font-mono);
+        font-size: 0.8125rem;
+        letter-spacing: 0;
+      }
+
+      .shell {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 var(--gutter);
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0;
+      }
+
+      /* Coluna de apresentação */
+      .intro {
+        padding: clamp(40px, 8vw, 96px) 0 clamp(40px, 6vw, 72px);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .mark {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--muted-foreground);
+      }
+
+      .mark svg {
+        flex: none;
+      }
+
+      h1 {
+        margin: 28px 0 0;
+        font-size: clamp(3.4rem, 10vw, 7.25rem);
+        font-weight: 800;
+        line-height: 0.92;
+        letter-spacing: -0.045em;
+      }
+
+      h1 .dot {
+        color: var(--accent);
+      }
+
+      .lead {
+        margin: 28px 0 0;
+        max-width: 30ch;
+        font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+        line-height: 1.3;
+        font-weight: 500;
+        letter-spacing: -0.015em;
+      }
+
+      .facts {
+        list-style: none;
+        margin: 32px 0 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .facts li {
+        padding: 6px 10px;
+        border: 1px solid var(--border-strong);
+        border-radius: 999px;
+        color: var(--muted-foreground);
+      }
+
+      .by {
+        margin: 40px 0 0;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+        display: grid;
+        gap: 6px;
+        color: var(--muted-foreground);
+        font-size: 0.9375rem;
+      }
+
+      .by strong {
+        color: var(--foreground);
+        font-weight: 700;
+      }
+
+      .by nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px 18px;
+      }
+
+      .by nav a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+      }
+
+      .by nav a:hover {
+        color: var(--foreground);
+      }
+
+      .index-nav {
+        margin: 36px 0 0;
+        display: none;
+      }
+
+      .index-nav ol {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 2px;
+      }
+
+      .index-nav a {
+        display: flex;
+        align-items: baseline;
+        gap: 14px;
+        min-height: 44px;
+        padding: 10px 0;
+        text-decoration: none;
+        color: var(--muted-foreground);
+        border-bottom: 1px solid var(--border);
+        transition: color 0.15s ease;
+      }
+
+      .index-nav a:hover {
+        color: var(--foreground);
+      }
+
+      .index-nav a span:first-child {
+        color: var(--faint-foreground);
+      }
+
+      /* Produtos */
+      .products {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .product {
+        padding: clamp(48px, 7vw, 88px) 0;
+        border-bottom: 1px solid var(--border);
+        scroll-margin-top: 24px;
+      }
+
+      .product:last-child {
+        border-bottom: 0;
+      }
+
+      .product-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+        color: var(--faint-foreground);
+      }
+
+      .product h2 {
+        margin: 14px 0 0;
+        font-size: clamp(2.1rem, 4.4vw, 3.4rem);
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.035em;
+      }
+
+      .product .kind {
+        margin: 10px 0 0;
+        color: var(--accent);
+        font-family: var(--font-mono);
+        font-size: 0.8125rem;
+      }
+
+      .product p.desc {
+        margin: 20px 0 0;
+        max-width: 60ch;
+        color: var(--muted-foreground);
+      }
+
+      .stack {
+        list-style: none;
+        margin: 20px 0 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 18px;
+        color: var(--foreground);
+      }
+
+      .stack li::before {
+        content: "/ ";
+        color: var(--faint-foreground);
+      }
+
+      .shot {
+        margin: 32px 0 0;
+        border-radius: var(--radius);
+        overflow: hidden;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        box-shadow: var(--shadow-shot);
+      }
+
+      .shot img {
+        width: 100%;
+      }
+
+      .phones {
+        margin: 32px 0 0;
+        padding: clamp(20px, 3vw, 36px);
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        background: var(--surface);
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: clamp(10px, 2vw, 24px);
+        align-items: start;
+      }
+
+      .phones img {
+        width: 100%;
+        border-radius: clamp(14px, 2vw, 26px);
+        border: 1px solid var(--border-strong);
+        box-shadow: var(--shadow-shot);
+      }
+
+      .phones img:nth-child(2) {
+        margin-top: clamp(16px, 4vw, 48px);
+      }
+
+      .actions {
+        margin: 28px 0 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px 22px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 48px;
+        padding: 0 20px;
+        border-radius: 8px;
+        background: var(--accent);
+        color: var(--accent-foreground);
+        font-weight: 700;
+        text-decoration: none;
+        transition: transform 0.15s ease, filter 0.15s ease;
+      }
+
+      .btn:hover {
+        filter: brightness(1.08);
+      }
+
+      .btn:active {
+        transform: translateY(1px);
+      }
+
+      .link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        color: var(--foreground);
+        text-decoration: underline;
+        text-decoration-color: var(--border-strong);
+        text-underline-offset: 5px;
+      }
+
+      .link:hover {
+        text-decoration-color: var(--accent);
+      }
+
+      .cmd {
+        margin: 24px 0 0;
+        display: flex;
+        align-items: stretch;
+        max-width: 460px;
+        border: 1px solid var(--border-strong);
+        border-radius: 8px;
+        background: var(--surface-raised);
+        overflow: hidden;
+      }
+
+      .cmd code {
+        flex: 1;
+        min-width: 0;
+        padding: 12px 14px;
+        font-family: var(--font-mono);
+        font-size: 0.875rem;
+        white-space: nowrap;
+        overflow-x: auto;
+      }
+
+      .cmd code::before {
+        content: "$ ";
+        color: var(--faint-foreground);
+      }
+
+      .cmd button {
+        flex: none;
+        min-width: 88px;
+        min-height: 44px;
+        border: 0;
+        border-left: 1px solid var(--border-strong);
+        background: transparent;
+        color: var(--muted-foreground);
+        font-family: var(--font-mono);
+        font-size: 0.8125rem;
+        cursor: pointer;
+      }
+
+      .cmd button:hover {
+        color: var(--foreground);
+      }
+
+      /* Princípios e rodapé */
+      .principles {
+        padding: clamp(48px, 7vw, 88px) 0;
+        border-top: 1px solid var(--border);
+      }
+
+      .principles h2 {
+        margin: 0;
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.05;
+      }
+
+      .principles ul {
+        list-style: none;
+        margin: 28px 0 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0;
+        border-top: 1px solid var(--border);
+      }
+
+      .principles li {
+        padding: 18px 0;
+        border-bottom: 1px solid var(--border);
+        display: grid;
+        gap: 4px;
+      }
+
+      .principles li strong {
+        font-weight: 700;
+      }
+
+      .principles li span {
+        color: var(--muted-foreground);
+        font-size: 0.9375rem;
+      }
+
+      footer {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 28px var(--gutter) 40px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 8px 24px;
+        color: var(--faint-foreground);
+        border-top: 1px solid var(--border);
+      }
+
+      footer a {
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        color: var(--foreground);
+      }
+
+      @media (min-width: 720px) {
+        .principles ul {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          column-gap: 40px;
+        }
+      }
+
+      @media (min-width: 1080px) {
+        .shell {
+          grid-template-columns: minmax(0, 5fr) minmax(0, 8fr);
+          gap: clamp(48px, 6vw, 96px);
+        }
+
+        .intro {
+          position: sticky;
+          top: 0;
+          align-self: start;
+          min-height: 100vh;
+          border-bottom: 0;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .index-nav {
+          display: block;
+        }
+
+        .by {
+          margin-top: auto;
+        }
+
+        .product:first-child {
+          padding-top: clamp(40px, 8vw, 96px);
+        }
+
+        .principles {
+          grid-column: 2;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        * {
+          transition: none !important;
+        }
+      }
+    </style>
   </head>
   <body>
-    <main>
-      <h1>Rendra Design System</h1>
-      <p>
-        Template de sistema e layout de sistema administrativo em React.
-        <a href="https://bsmagalhaes.github.io/rendra-design-system/">Abrir o demo</a> ·
-        <a href="https://github.com/bsmagalhaes/rendra-design-system">Código no GitHub</a>
-      </p>
-    </main>
+    <a class="skip" href="#produtos">Pular para os projetos</a>
+
+    <div class="shell">
+      <header class="intro">
+        <div class="mark mono">
+          <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+            <rect width="32" height="32" rx="7" fill="currentColor" opacity="0.14" />
+            <path d="M10 23V9h7.2a4.4 4.4 0 0 1 1.3 8.6L23 23" fill="none" stroke="var(--accent)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span>bsmagalhaes.github.io</span>
+        </div>
+
+        <h1>Rendra<br />UI<span class="dot">.</span></h1>
+
+        <p class="lead">
+          Ferramentas abertas para construir sistemas, apps e o seu próprio ambiente de trabalho com IA.
+        </p>
+
+        <ul class="facts mono" aria-label="Características comuns aos projetos">
+          <li>Gratuito</li>
+          <li>Licença MIT</li>
+          <li>Português do Brasil</li>
+          <li>Testado de ponta a ponta</li>
+        </ul>
+
+        <nav class="index-nav" aria-label="Projetos">
+          <ol>
+            <li><a href="#web"><span class="mono">01</span><span>Rendra Design System</span></a></li>
+            <li><a href="#app"><span class="mono">02</span><span>Rendra App</span></a></li>
+            <li><a href="#ide"><span class="mono">03</span><span>Rendra IDE</span></a></li>
+          </ol>
+        </nav>
+
+        <div class="by">
+          <span>Criado e mantido por <strong>Bruno Magalhaes</strong></span>
+          <nav aria-label="Contato do autor">
+            <a href="https://www.brunomagalhaes.me" rel="me">brunomagalhaes.me</a>
+            <a href="https://github.com/bsmagalhaes" rel="me">GitHub</a>
+            <a href="https://www.instagram.com/brunomagalhaes.me/" rel="me">Instagram</a>
+            <a href="https://www.npmjs.com/org/rendra-ui">npm</a>
+          </nav>
+        </div>
+      </header>
+
+      <main id="produtos">
+        <ol class="products">
+          <li class="product" id="web">
+            <div class="product-head mono"><span>01 / 03</span><span>Web</span></div>
+            <h2>Rendra Design System</h2>
+            <p class="kind">Design system e boilerplate de sistema administrativo</p>
+            <p class="desc">
+              Tokens travados, três modelos, quatro paletas e mais de 50 componentes, com AppShell e telas prontas:
+              painel, listagem, cadastro, CRM kanban, agenda e atendimento omnichannel. Para outra marca, você troca
+              cores, fonte e ícones, e nenhum componente muda.
+            </p>
+            <ul class="stack mono" aria-label="Tecnologias">
+              <li>React 19</li>
+              <li>TypeScript</li>
+              <li>Tailwind CSS 4</li>
+              <li>Vite</li>
+              <li>Storybook</li>
+            </ul>
+            <figure class="shot">
+              <img
+                src="assets/web-painel.webp"
+                width="1440"
+                height="810"
+                alt="Painel do Rendra Design System com indicadores de receita, clientes ativos, ticket médio e gráfico de receita e meta"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+            <div class="cmd"><code>npm install @rendra-ui/web</code><button type="button" data-copy="npm install @rendra-ui/web">Copiar</button></div>
+            <div class="actions">
+              <a class="btn" href="https://bsmagalhaes.github.io/rendra-ui-web/">Abrir o demo <span aria-hidden="true">→</span></a>
+              <a class="link" href="https://bsmagalhaes.github.io/rendra-ui-web/storybook/">Storybook</a>
+              <a class="link" href="https://github.com/bsmagalhaes/rendra-ui-web">Código no GitHub</a>
+              <a class="link" href="https://www.npmjs.com/package/@rendra-ui/web">npm</a>
+            </div>
+          </li>
+
+          <li class="product" id="app">
+            <div class="product-head mono"><span>02 / 03</span><span>Mobile</span></div>
+            <h2>Rendra App</h2>
+            <p class="kind">Design system e boilerplate mobile</p>
+            <p class="desc">
+              O mesmo sistema de tokens do web, reconstruído para o celular: 49 componentes, navegação pronta com
+              cabeçalho, barra inferior e menu, telas de exemplo, splash animado e troca de marca sem mexer em
+              componente.
+            </p>
+            <ul class="stack mono" aria-label="Tecnologias">
+              <li>React Native</li>
+              <li>Expo SDK 57</li>
+              <li>Expo Router</li>
+              <li>NativeWind 4</li>
+              <li>TypeScript</li>
+            </ul>
+            <div class="phones">
+              <img
+                src="assets/app-aurora-escuro-mobile.webp"
+                width="440"
+                height="952"
+                alt="Rendra App no modo escuro, vitrine de componentes agrupados por categoria"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                src="assets/app-equilibrio-tokens-mobile.webp"
+                width="440"
+                height="952"
+                alt="Tela de tokens do Rendra App com a paleta e o contraste AA conferido ao vivo"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                src="assets/app-aurora-galeria-mobile.webp"
+                width="440"
+                height="952"
+                alt="Galeria do Rendra App com troca de modelo, paleta e modo sem sair da tela"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="cmd"><code>npm install @rendra-ui/app</code><button type="button" data-copy="npm install @rendra-ui/app">Copiar</button></div>
+            <div class="actions">
+              <a class="btn" href="https://bsmagalhaes.github.io/rendra-ui-app/">Abrir a vitrine <span aria-hidden="true">→</span></a>
+              <a class="link" href="https://github.com/bsmagalhaes/rendra-ui-app">Código no GitHub</a>
+              <a class="link" href="https://www.npmjs.com/package/@rendra-ui/app">npm</a>
+            </div>
+          </li>
+
+          <li class="product" id="ide">
+            <div class="product-head mono"><span>03 / 03</span><span>Desktop</span></div>
+            <h2>Rendra IDE</h2>
+            <p class="kind">Ambiente de desenvolvimento para quem programa com IA</p>
+            <p class="desc">
+              Terminais em grade, o editor do VS Code, explorador com as cores do Git e um painel com o consumo de
+              tokens do Claude Code e do Codex por projeto, com custo por token e os limites do plano. Roda na sua
+              máquina, lendo só os arquivos locais das CLIs.
+            </p>
+            <ul class="stack mono" aria-label="Tecnologias">
+              <li>Electron</li>
+              <li>Monaco</li>
+              <li>xterm.js</li>
+              <li>Windows, macOS e Linux</li>
+            </ul>
+            <figure class="shot">
+              <img
+                src="assets/ide.webp"
+                width="1440"
+                height="810"
+                alt="Rendra IDE com explorador de arquivos, editor e terminais lado a lado"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+            <div class="actions">
+              <a class="btn" href="https://github.com/bsmagalhaes/rendra-ui-ide/releases/latest">Baixar a última versão <span aria-hidden="true">→</span></a>
+              <a class="link" href="https://bsmagalhaes.github.io/rendra-ui-ide/">Site da IDE</a>
+              <a class="link" href="https://github.com/bsmagalhaes/rendra-ui-ide">Código no GitHub</a>
+            </div>
+          </li>
+        </ol>
+      </main>
+
+      <section class="principles" aria-labelledby="principios">
+        <h2 id="principios">O que os três têm em comum</h2>
+        <ul>
+          <li>
+            <strong>Código aberto de verdade</strong>
+            <span>Licença MIT, código completo no GitHub, sem versão paga escondida.</span>
+          </li>
+          <li>
+            <strong>Feitos para trabalhar com IA</strong>
+            <span>Cada repositório traz regras e briefing guiado para o seu agente usar o projeto do jeito certo.</span>
+          </li>
+          <li>
+            <strong>Uma escala, sem exceção</strong>
+            <span>Espaço, tipografia, cor e raio vêm de tokens; o que está fora da escala não passa na checagem.</span>
+          </li>
+          <li>
+            <strong>Publicados com procedência</strong>
+            <span>Pacotes npm assinados pelo GitHub Actions, com CI, testes de layout e de acessibilidade.</span>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <footer class="mono">
+      <span>Rendra UI, por <a href="https://www.brunomagalhaes.me">Bruno Magalhaes</a>. Licença MIT.</span>
+      <a href="https://github.com/bsmagalhaes">github.com/bsmagalhaes</a>
+    </footer>
+
+    <script>
+      document.querySelectorAll("[data-copy]").forEach(function (botao) {
+        botao.addEventListener("click", function () {
+          var texto = botao.getAttribute("data-copy");
+          var pronto = function () {
+            botao.textContent = "Copiado";
+            setTimeout(function () {
+              botao.textContent = "Copiar";
+            }, 1600);
+          };
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(texto).then(pronto, function () {});
+          }
+        });
+      });
+    </script>
   </body>
 </html>

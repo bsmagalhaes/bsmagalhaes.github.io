@@ -1,0 +1,13 @@
+# Rendra UI
+
+> Projetos open source de Bruno Magalhaes, gratuitos, em português do Brasil e com licença MIT: um design system web, um design system mobile e uma IDE para quem programa com IA.
+
+## Projetos
+
+- [Rendra Design System](https://bsmagalhaes.github.io/rendra-ui-web/): design system e boilerplate de sistema administrativo em React 19, TypeScript e Tailwind CSS 4, com tokens, três modelos, quatro paletas, mais de 50 componentes, AppShell e telas prontas (painel, listagem, cadastro, CRM kanban, agenda e atendimento omnichannel). Instalação: `npm install @rendra-ui/web`. Código: https://github.com/bsmagalhaes/rendra-ui-web. Detalhes: https://bsmagalhaes.github.io/rendra-ui-web/llms.txt
+- [Rendra App](https://bsmagalhaes.github.io/rendra-ui-app/): design system e boilerplate mobile em React Native com Expo SDK 57, Expo Router e NativeWind 4, com 49 componentes, navegação pronta, telas de exemplo e troca de marca sem mexer em componente. Instalação: `npm install @rendra-ui/app`. Código: https://github.com/bsmagalhaes/rendra-ui-app
+- [Rendra IDE](https://bsmagalhaes.github.io/rendra-ui-ide/): aplicativo de desktop (Windows, macOS e Linux) com terminais em grade, editor Monaco, explorador com as cores do Git e o consumo de tokens do Claude Code e do Codex por projeto, com custo por token e limites do plano. Download: https://github.com/bsmagalhaes/rendra-ui-ide/releases/latest
+
+## Autor
+
+- Bruno Magalhaes: https://www.brunomagalhaes.me, https://github.com/bsmagalhaes

@@ -1,5 +1,32 @@
+# Este é o único robots.txt que os robôs leem para todo o bsmagalhaes.github.io (os dos
+# projetos, em /rendra-ui-*/robots.txt, são ignorados). Liberado para todo robô de busca,
+# inclusive os de busca e resposta de assistente de IA a pedido de alguém. Bloqueado só
+# para os robôs que rastreiam o site inteiro para treinar modelo.
 User-agent: *
 Allow: /
 
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
 Sitemap: https://bsmagalhaes.github.io/sitemap.xml
-Sitemap: https://bsmagalhaes.github.io/rendra-design-system/sitemap.xml
+Sitemap: https://bsmagalhaes.github.io/rendra-ui-web/sitemap.xml
+Sitemap: https://bsmagalhaes.github.io/rendra-ui-app/sitemap.xml
+Sitemap: https://bsmagalhaes.github.io/rendra-ui-ide/sitemap.xml

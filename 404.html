@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Página não encontrada | Rendra UI</title>
+    <script>
+      // Endereços antigos, de antes da renomeação dos repositórios em 29/09/2026: leva ao
+      // endereço novo mantendo o resto do caminho, a busca e a âncora.
+      (function () {
+        var mapa = {
+          "/rendra-design-system": "/rendra-ui-web",
+          "/rendra-app": "/rendra-ui-app",
+          "/rendra-ide": "/rendra-ui-ide"
+        };
+        var caminho = location.pathname;
+        for (var antigo in mapa) {
+          if (caminho === antigo || caminho.indexOf(antigo + "/") === 0) {
+            location.replace(mapa[antigo] + caminho.slice(antigo.length) + location.search + location.hash);
+            return;
+          }
+        }
+      })();
+    </script>
+    <style>
+      :root { --background: #0c0e12; --foreground: #ece9e2; --muted-foreground: #979ca6; --accent: #ff7a45; color-scheme: dark; }
+      @media (prefers-color-scheme: light) { :root { --background: #f4f2ec; --foreground: #16181d; --muted-foreground: #555a63; --accent: #c2410c; color-scheme: light; } }
+      body { margin: 0; min-height: 100vh; display: grid; place-content: center; padding: 16px; background: var(--background); color: var(--foreground); font-family: ui-sans-serif, system-ui, sans-serif; text-align: center; }
+      h1 { margin: 0; font-size: 2rem; letter-spacing: -0.02em; }
+      p { color: var(--muted-foreground); }
+      a { color: var(--accent); display: inline-flex; min-height: 44px; align-items: center; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Página não encontrada</h1>
+      <p>O endereço pode ter mudado.</p>
+      <a href="/">Ver os projetos do Rendra UI</a>
+    </main>
+  </body>
+</html>

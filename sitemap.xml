@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <sitemap><loc>https://bsmagalhaes.github.io/rendra-design-system/sitemap.xml</loc></sitemap>
+  <sitemap><loc>https://bsmagalhaes.github.io/sitemap-raiz.xml</loc></sitemap>
+  <sitemap><loc>https://bsmagalhaes.github.io/rendra-ui-web/sitemap.xml</loc></sitemap>
+  <sitemap><loc>https://bsmagalhaes.github.io/rendra-ui-app/sitemap.xml</loc></sitemap>
+  <sitemap><loc>https://bsmagalhaes.github.io/rendra-ui-ide/sitemap.xml</loc></sitemap>
 </sitemapindex>
